@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace logowania
 {
@@ -32,6 +33,11 @@ namespace logowania
         {
             Haslo h = new Haslo();
             h.haslo = txtNoweHaslo.Text;
+            
+            StreamWriter sw = new StreamWriter("password.txt");
+            sw.WriteLine(h.haslo);
+            sw.Close();
+            
             if (h.haslo == txtNoweHaslo.Text)
             {
                 MessageBox.Show("Hasło zostało pomyślnie zmienione", "Zmiana hasła", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -43,7 +49,7 @@ namespace logowania
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

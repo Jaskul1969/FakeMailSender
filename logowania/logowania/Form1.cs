@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace logowania
 {
@@ -42,7 +43,12 @@ namespace logowania
         private void button1_Click(object sender, EventArgs e)
         {
             Haslo h = new Haslo();
-           
+            StreamReader sr = new StreamReader("password.txt");
+            h.haslo = sr.ReadLine();
+            if (h.haslo == null)
+                return; //blad
+            sr.Close();
+
             if (txtlogin.Text == "Admin" && txtHaslo.Text == h.haslo && checkBox1.Checked)
             {
                 Form2 f = new Form2();
